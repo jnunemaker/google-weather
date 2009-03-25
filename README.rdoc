@@ -1,6 +1,10 @@
 = google-weather
 
-Description goes here.
+Stupid simple fetching of the weather using google's api
+
+= example
+
+See the examples directory. Trust me it is easy though.
 
 == Copyright
 

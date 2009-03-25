@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "google-weather"
-    gem.summary = %Q{TODO}
+    gem.summary = "stupid simple fetching of the weather using google's api"
     gem.email = "nunemaker@gmail.com"
     gem.homepage = "http://github.com/jnunemaker/google-weather"
     gem.authors = ["John Nunemaker"]
