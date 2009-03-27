@@ -7,5 +7,7 @@ forecast = weather.forecast_conditions[0]
 puts forecast.day_of_week, forecast.low, forecast.high, forecast.condition
 
 pp weather.forecast_information
+puts
 pp weather.current_conditions
+puts
 pp weather.forecast_conditions

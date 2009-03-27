@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require File.dirname(__FILE__) + '/../lib/google_weather'
+
+if ARGV.size == 0
+  puts 'Weather [Powered by Google]'
+  puts 'USAGE: weather [zip code or city]'
+  puts 'EXAMPLES:'
+  puts '  weather 46544'
+  puts '  weather "mishawaka, in"'
+  exit
+end
+
+weather = GoogleWeather.new(ARGV[0])
+current = weather.current_conditions
+puts "#{current.temp_f}° #{current.condition} - #{current.wind_condition} - #{current.humidity}"
