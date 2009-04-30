@@ -4,8 +4,14 @@ Stupid simple fetching of the weather using google's api
 
 = example
 
-See the examples directory. Trust me it is easy though.
+See the examples directory . Trust me it is easy though.
+
+http://github.com/jnunemaker/google-weather/tree/master/examples
 
 == Copyright
 
 Copyright (c) 2009 John Nunemaker. See LICENSE for details.
+
+== Docs
+
+http://rdoc.info/projects/jnunemaker/google-weather
