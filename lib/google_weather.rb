@@ -1,5 +1,3 @@
-require 'rubygems'
-gem 'httparty'
 require 'httparty'
 require File.dirname(__FILE__) + '/google_weather/data'
 

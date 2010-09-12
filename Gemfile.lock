@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    google-weather (0.2.0)
+      httparty (= 0.5.2)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    crack (0.1.6)
+    httparty (0.5.2)
+      crack (= 0.1.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (>= 1.0.0)
+  google-weather!
+  httparty (= 0.5.2)

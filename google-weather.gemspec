@@ -1,31 +1,27 @@
 # -*- encoding: utf-8 -*-
+require File.expand_path("../lib/google_weather/version", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name = %q{google-weather}
-  s.version = "0.2.0"
+  s.name        = "google-weather"
+  s.version     = GoogleWeather::VERSION
+  s.platform    = Gem::Platform::RUBY
+  s.authors     = ["John Nunemaker"]
+  s.email       = ["nunemaker@gmail.com"]
+  s.homepage    = "http://rubygems.org/gems/google-weather"
+  s.summary     = "stupid simple fetching of the weather using google's api"
+  s.description = "stupid simple fetching of the weather using google's api"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["John Nunemaker"]
-  s.date = %q{2009-03-27}
-  s.default_executable = %q{weather}
-  s.email = %q{nunemaker@gmail.com}
-  s.executables = ["weather"]
+  s.required_rubygems_version = ">= 1.3.6"
+  s.rubyforge_project         = "google-weather"
+
+  s.add_development_dependency "bundler", ">= 1.0.0"
+  s.add_dependency "httparty", "0.5.2"
+
+  s.files        = `git ls-files`.split("\n")
+  s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
+  s.require_path = 'lib'
   s.extra_rdoc_files = ["README.rdoc", "LICENSE"]
-  s.files = ["README.rdoc", "VERSION.yml", "bin/weather", "lib/google_weather", "lib/google_weather/data.rb", "lib/google_weather.rb", "test/fixtures", "test/fixtures/46544.xml", "test/google_weather_test.rb", "test/test_helper.rb", "LICENSE"]
   s.has_rdoc = true
-  s.homepage = %q{http://github.com/jnunemaker/google-weather}
+  s.homepage = "http://github.com/jnunemaker/google-weather"
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.1}
-  s.summary = %q{stupid simple fetching of the weather using google's api}
-
-  if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 2
-
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-    else
-    end
-  else
-  end
 end
