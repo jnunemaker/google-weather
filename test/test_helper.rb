@@ -1,3 +1,4 @@
+require 'pathname'
 require 'rubygems'
 require 'test/unit'
 require 'shoulda'
@@ -11,4 +12,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'google_weather'
 
 class Test::Unit::TestCase
+  def fixture_file(path)
+    Pathname(__FILE__).dirname.join(*path.split('/')).read
+  end
 end

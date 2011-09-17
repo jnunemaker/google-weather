@@ -26,7 +26,7 @@ class GoogleWeatherTest < Test::Unit::TestCase
   
   context "Fetching" do
     setup do
-      FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=46544", :string => File.read("fixtures/46544.xml"))
+      FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=46544", :body => fixture_file("fixtures/46544.xml"))
       @weather = GoogleWeather.new(46544)
     end
     

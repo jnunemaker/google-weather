@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "google-weather"
 
-  s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_dependency "httparty", "0.5.2"
 
   s.files        = `git ls-files`.split("\n")
