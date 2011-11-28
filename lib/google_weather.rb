@@ -12,7 +12,7 @@ class GoogleWeather
   end
   
   def weather
-    @weather ||= self.class.get("/ig/api", :query => {:weather => @zip}, :format => :xml)['xml_api_reply']['weather']
+    @weather ||= self.class.get("/ig/api", :query => {:weather => @zip, :hl => I18n.locale.to_s, :oe => 'utf-8'}, :format => :xml)['xml_api_reply']['weather']
   end
   
   def forecast_information
