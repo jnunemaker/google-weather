@@ -4,17 +4,21 @@ require File.dirname(__FILE__) + '/google_weather/data'
 class GoogleWeather
   include HTTParty
   base_uri "www.google.com"
+  Path = "/ig/api"
 
   attr_reader :param
-  attr_reader :locale
 
-  def initialize(value, locale = :en)
-    @param = prep_param(value)
-    @locale = locale
+  def initialize(value, options={})
+    @param   = prep_param(value)
+    @options = options
+  end
+
+  def locale
+    @options[:locale] || :en
   end
 
   def weather
-    @weather ||= self.class.get("/ig/api", :query => {:weather => @param, :hl => @locale, :oe => 'utf-8'}, :format => :xml)['xml_api_reply']['weather']
+    @weather ||= self.class.get(Path, weather_options)['xml_api_reply']['weather']
   end
 
   def forecast_information
@@ -30,6 +34,17 @@ class GoogleWeather
   end
 
   private
+
+  def weather_options
+    opts = {
+      :query => {
+        :weather => param,
+        :hl => locale,
+        :oe => 'utf-8'
+      },
+      :format => :xml,
+    }
+  end
 
   def prep_param(value)
     if value.kind_of?(Array)

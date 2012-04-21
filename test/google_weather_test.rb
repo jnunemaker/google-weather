@@ -17,7 +17,7 @@ class GoogleWeatherTest < Test::Unit::TestCase
     end
 
     should "set specified locale if it's passed" do
-      GoogleWeather.new('Vologda', :ru).locale.should == :ru
+      GoogleWeather.new('Vologda', :locale => :ru).locale.should == :ru
     end
   end
 
