@@ -6,13 +6,15 @@ class GoogleWeather
   base_uri "www.google.com"
   
   attr_reader :zip
-  
-  def initialize(zip)
+  attr_reader :locale
+
+  def initialize(zip, locale = :en)
     @zip = zip
+    @locale = locale
   end
   
   def weather
-    @weather ||= self.class.get("/ig/api", :query => {:weather => @zip}, :format => :xml)['xml_api_reply']['weather']
+    @weather ||= self.class.get("/ig/api", :query => {:weather => @zip, :hl => @locale, :oe => 'utf-8'}, :format => :xml)['xml_api_reply']['weather']
   end
   
   def forecast_information

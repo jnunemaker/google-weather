@@ -7,6 +7,15 @@ class GoogleWeatherTest < Test::Unit::TestCase
       
       GoogleWeather.new(46544).zip.should == 46544
     end
+
+    should "set en locale by default" do
+      GoogleWeather.new(46544).locale.should == :en
+    end
+
+    should "set specified locale if it's passed" do
+      GoogleWeather.new('Vologda', :ru).locale.should == :ru
+    end
+
   end
   
   context "Data" do
@@ -26,7 +35,7 @@ class GoogleWeatherTest < Test::Unit::TestCase
   
   context "Fetching" do
     setup do
-      FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=46544", :body => fixture_file("fixtures/46544.xml"))
+      FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=46544&hl=en&oe=utf-8", :body => fixture_file("fixtures/46544.xml"))
       @weather = GoogleWeather.new(46544)
     end
     
