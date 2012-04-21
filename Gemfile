@@ -4,6 +4,6 @@ source :rubygems
 gemspec
 
 gem 'rake'
-gem 'shoulda'
-gem 'jnunemaker-matchy', :require => 'matchy'
-gem 'fakeweb'
+gem 'shoulda', '2.11.3'
+gem 'jnunemaker-matchy', '0.4.0', :require => 'matchy'
+gem 'fakeweb', '1.3.0'
