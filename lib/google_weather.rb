@@ -6,13 +6,15 @@ class GoogleWeather
   base_uri "www.google.com"
 
   attr_reader :param
+  attr_reader :locale
 
-  def initialize(value)
+  def initialize(value, locale = :en)
     @param = prep_param(value)
+    @locale = locale
   end
 
   def weather
-    @weather ||= self.class.get("/ig/api", :query => {:weather => @param}, :format => :xml)['xml_api_reply']['weather']
+    @weather ||= self.class.get("/ig/api", :query => {:weather => @param, :hl => @locale, :oe => 'utf-8'}, :format => :xml)['xml_api_reply']['weather']
   end
 
   def forecast_information
@@ -28,6 +30,7 @@ class GoogleWeather
   end
 
   private
+
   def prep_param(value)
     if value.kind_of?(Array)
       value = value.inject([]) do |result, element|

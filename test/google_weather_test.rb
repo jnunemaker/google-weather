@@ -11,6 +11,14 @@ class GoogleWeatherTest < Test::Unit::TestCase
     should "convert lat, lng array into string of e6 formatted lat,lng values" do
       GoogleWeather.new([32.24959602450668,-110.8394506158091]).param.should == ',,,32249596,-110839450'
     end
+
+    should "set en locale by default" do
+      GoogleWeather.new(46544).locale.should == :en
+    end
+
+    should "set specified locale if it's passed" do
+      GoogleWeather.new('Vologda', :ru).locale.should == :ru
+    end
   end
 
   context "Data" do
@@ -27,11 +35,10 @@ class GoogleWeatherTest < Test::Unit::TestCase
     end
   end
 
-
   context "Fetching" do
     context "with a zip code" do
       setup do
-        FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=46544", :body => fixture_file("fixtures/46544.xml"))
+        FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=46544&hl=en&oe=utf-8", :body => fixture_file("fixtures/46544.xml"))
         @weather = GoogleWeather.new(46544)
       end
 
@@ -71,7 +78,7 @@ class GoogleWeatherTest < Test::Unit::TestCase
 
     context "with a string" do
       setup do
-        FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=London%2CUK", :body => fixture_file("fixtures/london.xml"))
+        FakeWeb.register_uri(:get, "http://www.google.com/ig/api?hl=en&oe=utf-8&weather=London%2CUK", :body => fixture_file("fixtures/london.xml"))
         @weather = GoogleWeather.new('London,UK')
       end
 
@@ -111,7 +118,7 @@ class GoogleWeatherTest < Test::Unit::TestCase
 
     context "with latitude, longitude array" do
       setup do
-        FakeWeb.register_uri(:get, "http://www.google.com/ig/api?weather=%2C%2C%2C32221700%2C110925800", :body => fixture_file("fixtures/coords.xml"))
+        FakeWeb.register_uri(:get, "http://www.google.com/ig/api?hl=en&oe=utf-8&weather=%2C%2C%2C32221700%2C110925800", :body => fixture_file("fixtures/coords.xml"))
         @weather = GoogleWeather.new(',,,32221700,110925800')
       end
 
