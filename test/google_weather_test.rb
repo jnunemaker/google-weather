@@ -4,8 +4,14 @@ class GoogleWeatherTest < Test::Unit::TestCase
   context "Initialization" do
     should "require a value" do
       lambda { GoogleWeather.new }.should raise_error
+    end
 
+    should "set param" do
       GoogleWeather.new(46544).param.should == 46544
+    end
+
+    should "work with string" do
+      GoogleWeather.new('Mishawaka, IN').param.should == 'Mishawaka, IN'
     end
 
     should "convert lat, lng array into string of e6 formatted lat,lng values" do
