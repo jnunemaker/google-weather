@@ -13,4 +13,18 @@ end
 
 weather = GoogleWeather.new(ARGV[0])
 current = weather.current_conditions
-puts "#{current.temp_f}° #{current.condition} - #{current.wind_condition} - #{current.humidity}"
+puts
+puts "#{weather.forecast_information.city}"
+puts "#{current.temp_f}° #{current.condition}"
+puts "#{current.wind_condition}"
+puts "#{current.humidity}"
+puts
+
+weather.forecast_conditions.each do |condition|
+  puts "#{condition.day_of_week}"
+  puts "  #{condition.condition}"
+  puts "  High: #{condition.high}°"
+  puts "  Low:  #{condition.low}°"
+end
+
+puts
